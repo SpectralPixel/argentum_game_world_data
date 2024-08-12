@@ -7,3 +7,5 @@ license = "AGPL-3.0-only"
 
 [dependencies]
 quickcheck = { version = "1.0.3", default-features = false }
+dashmap = "6.0.1"
+ndarray = "0.16.0"
