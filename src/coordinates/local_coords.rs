@@ -1,8 +1,9 @@
 use core::fmt;
 
-use argentum_game_coordinate_system::{GlobalCoord, GlobalCoordType};
-
-use crate::world_data::World;
+use crate::{
+    coordinates::{GlobalCoord, GlobalCoordType},
+    world_data::World,
+};
 
 // u8: From 0 to 255
 // Might need to increase this number if the chunk size grows beyond 255.

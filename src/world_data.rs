@@ -1,12 +1,11 @@
 use std::error::Error;
 
-use argentum_game_coordinate_system::GlobalCoord;
 use argentum_game_voxel::Voxel;
 use chunk::Chunk;
 use dashmap::DashMap;
 
 use crate::{
-    coordinates::{ChunkCoord, LocalCoord},
+    coordinates::{ChunkCoord, GlobalCoord, LocalCoord},
     errors::ChunkNotFoundError,
 };
 
@@ -65,7 +64,6 @@ impl World {
 
 #[cfg(test)]
 mod tests {
-    use argentum_game_coordinate_system::GlobalCoordType;
     use quickcheck::quickcheck;
 
     use super::*;
