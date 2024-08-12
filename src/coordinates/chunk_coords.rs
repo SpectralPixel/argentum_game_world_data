@@ -1,6 +1,8 @@
 use core::fmt;
 
-use crate::{coordinates::*, world_data::World};
+use argentum_game_coordinate_system::{GlobalCoord, GlobalCoordType};
+
+use crate::world_data::World;
 
 // i32: From −2,147,483,648 to 2,147,483,647
 // Had to make i32 because of failing test with i16...

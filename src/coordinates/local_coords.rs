@@ -1,8 +1,8 @@
 use core::fmt;
 
-use crate::world_data::World;
+use argentum_game_coordinate_system::{GlobalCoord, GlobalCoordType};
 
-use super::*;
+use crate::world_data::World;
 
 // u8: From 0 to 255
 // Might need to increase this number if the chunk size grows beyond 255.
@@ -48,7 +48,7 @@ mod tests {
     use super::*;
 
     quickcheck! {
-        fn wrapped_position_within_chunk_bounds(random_x: global_coords::GlobalCoordType, random_y: global_coords::GlobalCoordType, random_z: global_coords::GlobalCoordType) -> bool {
+        fn wrapped_position_within_chunk_bounds(random_x: GlobalCoordType, random_y: GlobalCoordType, random_z: GlobalCoordType) -> bool {
             let global_position = GlobalCoord::new(random_x, random_y, random_z);
             let local_position = LocalCoord::from(global_position);
 
