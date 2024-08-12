@@ -64,8 +64,8 @@ mod tests {
 
     #[test]
     fn display() {
-        let pos = GlobalCoord { x: 1, y: 2, z: 3 };
+        let pos = LocalCoord { x: 1, y: 2, z: 3 };
 
-        assert_eq!(pos.to_string(), "GlobalCoord (1, 2, 3)")
+        assert_eq!(pos.to_string(), "LocalCoord (1, 2, 3)")
     }
 }
