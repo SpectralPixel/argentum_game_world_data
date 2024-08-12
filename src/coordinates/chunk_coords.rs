@@ -4,7 +4,7 @@ use crate::{coordinates::*, world_data::World};
 
 // i32: From −2,147,483,648 to 2,147,483,647
 // Had to make i32 because of failing test with i16...
-pub type ChunkCoordType = i32;
+type ChunkCoordType = i32;
 
 #[derive(PartialEq, Debug, Clone, Eq, Hash)]
 pub struct ChunkCoord {

@@ -6,7 +6,7 @@ use super::*;
 
 // u8: From 0 to 255
 // Might need to increase this number if the chunk size grows beyond 255.
-pub type LocalCoordType = u8;
+type LocalCoordType = u8;
 
 #[derive(PartialEq, Debug, Clone)]
 pub struct LocalCoord {
@@ -48,7 +48,7 @@ mod tests {
     use super::*;
 
     quickcheck! {
-        fn wrapped_position_within_chunk_bounds(random_x: global::GlobalCoordType, random_y: global::GlobalCoordType, random_z: global::GlobalCoordType) -> bool {
+        fn wrapped_position_within_chunk_bounds(random_x: global_coords::GlobalCoordType, random_y: global_coords::GlobalCoordType, random_z: global_coords::GlobalCoordType) -> bool {
             let global_position = GlobalCoord::new(random_x, random_y, random_z);
             let local_position = LocalCoord::from(global_position);
 
