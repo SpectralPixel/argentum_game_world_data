@@ -1,7 +1,7 @@
 use std::error::Error;
 
-use dashmap::DashMap;
 use chunk::{Chunk, ChunkNotFoundError};
+use dashmap::DashMap;
 use voxel::Voxel;
 
 use crate::coordinates::{ChunkCoord, GlobalCoord, LocalCoord};
@@ -68,9 +68,9 @@ mod tests {
     use crate::coordinates::*;
 
     quickcheck! {
-        fn create_chunk_at(random_x: ChunkCoordType, random_y: ChunkCoordType, random_z: ChunkCoordType) -> bool {
+        fn create_chunk_at(random_x: GlobalCoordType, random_y: GlobalCoordType, random_z: GlobalCoordType) -> bool {
             let mut world = World::new();
-            let position = ChunkCoord::new(random_x, random_y, random_z);
+            let position: ChunkCoord = GlobalCoord::new(random_x, random_y, random_z).into();
             world.create_chunk(&position);
             let chunk_exists = world.data.get(&position).is_some();
             chunk_exists
@@ -78,9 +78,9 @@ mod tests {
     }
 
     quickcheck! {
-        fn set_chunk(random_x: ChunkCoordType, random_y: ChunkCoordType, random_z: ChunkCoordType) -> bool {
+        fn set_chunk(random_x: GlobalCoordType, random_y: GlobalCoordType, random_z: GlobalCoordType) -> bool {
             let mut world = World::new();
-            let position = ChunkCoord::new(random_x, random_y, random_z);
+            let position: ChunkCoord = GlobalCoord::new(random_x, random_y, random_z).into();
             let new_chunk = Chunk::new();
             world.set_chunk(&position, new_chunk);
             let chunk_exists = world.data.get(&position).is_some();
@@ -99,7 +99,8 @@ mod tests {
     #[test]
     fn get_existing_voxel() {
         let mut world = World::new();
-        world.create_chunk(&ChunkCoord::new(0, 0, 0));
+        let position: ChunkCoord = GlobalCoord::new(0, 0, 0).into();
+        world.create_chunk(&position);
         let position = GlobalCoord::new(1, 5, 3);
         let voxel_exists = world.get_voxel(&position).is_ok();
         assert!(voxel_exists);
@@ -117,7 +118,8 @@ mod tests {
     #[test]
     fn set_then_get_voxel() {
         let mut world = World::new();
-        world.create_chunk(&ChunkCoord::new(0, 0, 0));
+        let position: ChunkCoord = GlobalCoord::new(0, 0, 0).into();
+        world.create_chunk(&position);
         let position = GlobalCoord::new(1, 5, 3);
         world.set_voxel(&position, Voxel::new(0)).unwrap();
         let voxel_exists = world.get_voxel(&position).is_ok();

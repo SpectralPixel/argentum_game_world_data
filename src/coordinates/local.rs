@@ -15,23 +15,6 @@ pub struct LocalCoord {
     pub z: LocalCoordType,
 }
 
-impl LocalCoord {
-    pub const MIN: Self = Self {
-        x: LocalCoordType::MIN,
-        y: LocalCoordType::MIN,
-        z: LocalCoordType::MIN,
-    };
-    pub const MAX: Self = Self {
-        x: LocalCoordType::MAX,
-        y: LocalCoordType::MAX,
-        z: LocalCoordType::MAX,
-    };
-
-    pub fn new(x: LocalCoordType, y: LocalCoordType, z: LocalCoordType) -> Self {
-        Self { x, y, z }
-    }
-}
-
 impl fmt::Display for LocalCoord {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "LocalCoord ({}, {}, {})", self.x, self.y, self.z)
@@ -63,40 +46,6 @@ mod tests {
     use quickcheck::quickcheck;
 
     use super::*;
-
-    quickcheck! {
-        fn new_position(x: LocalCoordType, y: LocalCoordType, z: LocalCoordType) -> bool {
-            let result = LocalCoord::new(x, y, z);
-            let expected = LocalCoord { x, y, z };
-            result == expected
-        }
-    }
-
-    #[test]
-    fn min_pos() {
-        let expected = LocalCoord {
-            x: LocalCoordType::MIN,
-            y: LocalCoordType::MIN,
-            z: LocalCoordType::MIN,
-        };
-        assert_eq!(expected, LocalCoord::MIN);
-        assert_eq!(expected.x, LocalCoordType::MIN);
-        assert_eq!(expected.y, LocalCoordType::MIN);
-        assert_eq!(expected.z, LocalCoordType::MIN);
-    }
-
-    #[test]
-    fn max_pos() {
-        let expected = LocalCoord {
-            x: LocalCoordType::MAX,
-            y: LocalCoordType::MAX,
-            z: LocalCoordType::MAX,
-        };
-        assert_eq!(expected, LocalCoord::MAX);
-        assert_eq!(expected.x, LocalCoordType::MAX);
-        assert_eq!(expected.y, LocalCoordType::MAX);
-        assert_eq!(expected.z, LocalCoordType::MAX);
-    }
 
     quickcheck! {
         fn wrapped_position_within_chunk_bounds(random_x: global::GlobalCoordType, random_y: global::GlobalCoordType, random_z: global::GlobalCoordType) -> bool {

@@ -13,23 +13,6 @@ pub struct ChunkCoord {
     pub z: ChunkCoordType,
 }
 
-impl ChunkCoord {
-    pub const MIN: Self = Self {
-        x: ChunkCoordType::MIN,
-        y: ChunkCoordType::MIN,
-        z: ChunkCoordType::MIN,
-    };
-    pub const MAX: Self = Self {
-        x: ChunkCoordType::MAX,
-        y: ChunkCoordType::MAX,
-        z: ChunkCoordType::MAX,
-    };
-
-    pub fn new(x: ChunkCoordType, y: ChunkCoordType, z: ChunkCoordType) -> Self {
-        Self { x, y, z }
-    }
-}
-
 impl fmt::Display for ChunkCoord {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "ChunkCoord ({}, {}, {})", self.x, self.y, self.z)
@@ -55,43 +38,7 @@ impl From<GlobalCoord> for ChunkCoord {
 
 #[cfg(test)]
 mod tests {
-    use quickcheck::quickcheck;
-
     use super::*;
-
-    quickcheck! {
-        fn new_position(x: ChunkCoordType, y: ChunkCoordType, z: ChunkCoordType) -> bool {
-            let result = ChunkCoord::new(x, y, z);
-            let expected = ChunkCoord { x, y, z };
-            result == expected
-        }
-    }
-
-    #[test]
-    fn min_pos() {
-        let expected = ChunkCoord {
-            x: ChunkCoordType::MIN,
-            y: ChunkCoordType::MIN,
-            z: ChunkCoordType::MIN,
-        };
-        assert_eq!(expected, ChunkCoord::MIN);
-        assert_eq!(expected.x, ChunkCoordType::MIN);
-        assert_eq!(expected.y, ChunkCoordType::MIN);
-        assert_eq!(expected.z, ChunkCoordType::MIN);
-    }
-
-    #[test]
-    fn max_pos() {
-        let expected = ChunkCoord {
-            x: ChunkCoordType::MAX,
-            y: ChunkCoordType::MAX,
-            z: ChunkCoordType::MAX,
-        };
-        assert_eq!(expected, ChunkCoord::MAX);
-        assert_eq!(expected.x, ChunkCoordType::MAX);
-        assert_eq!(expected.y, ChunkCoordType::MAX);
-        assert_eq!(expected.z, ChunkCoordType::MAX);
-    }
 
     #[test]
     fn display() {
