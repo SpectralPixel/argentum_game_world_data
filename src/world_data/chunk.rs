@@ -1,10 +1,14 @@
 use std::error::Error;
 
+use argentum_game_voxel::Voxel;
 use ndarray::{Array3, Ix3};
 
-use crate::{coordinates::LocalCoord, errors::{VoxelNotFoundError, WrappedPositionOutOfBoundsError}};
+use crate::{
+    coordinates::LocalCoord,
+    errors::{VoxelNotFoundError, WrappedPositionOutOfBoundsError},
+};
 
-use super::{voxel::Voxel, World};
+use super::World;
 
 #[derive(PartialEq, Debug)]
 pub struct Chunk {

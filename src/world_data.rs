@@ -1,13 +1,15 @@
 use std::error::Error;
 
+use argentum_game_voxel::Voxel;
 use chunk::Chunk;
 use dashmap::DashMap;
-use voxel::Voxel;
 
-use crate::{coordinates::{ChunkCoord, GlobalCoord, LocalCoord}, errors::ChunkNotFoundError};
+use crate::{
+    coordinates::{ChunkCoord, GlobalCoord, LocalCoord},
+    errors::ChunkNotFoundError,
+};
 
 mod chunk;
-mod voxel;
 
 #[derive(Default)]
 pub struct World {
