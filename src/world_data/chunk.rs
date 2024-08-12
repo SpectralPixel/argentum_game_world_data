@@ -2,16 +2,9 @@ use std::error::Error;
 
 use ndarray::{Array3, Ix3};
 
-use crate::coordinates::LocalCoord;
+use crate::{coordinates::LocalCoord, errors::{VoxelNotFoundError, WrappedPositionOutOfBoundsError}};
 
-use super::{
-    voxel::{Voxel, VoxelNotFoundError, WrappedPositionOutOfBoundsError},
-    World,
-};
-
-pub mod errors;
-
-pub use errors::*;
+use super::{voxel::Voxel, World};
 
 #[derive(PartialEq, Debug)]
 pub struct Chunk {

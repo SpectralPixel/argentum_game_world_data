@@ -1,7 +1,3 @@
-pub mod errors;
-
-pub use errors::*;
-
 #[derive(PartialEq, Debug, Default, Clone)]
 pub struct Voxel(pub u8);
 

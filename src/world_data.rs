@@ -1,10 +1,10 @@
 use std::error::Error;
 
-use chunk::{Chunk, ChunkNotFoundError};
+use chunk::Chunk;
 use dashmap::DashMap;
 use voxel::Voxel;
 
-use crate::coordinates::{ChunkCoord, GlobalCoord, LocalCoord};
+use crate::{coordinates::{ChunkCoord, GlobalCoord, LocalCoord}, errors::ChunkNotFoundError};
 
 mod chunk;
 mod voxel;
