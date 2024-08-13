@@ -3,7 +3,7 @@ name = "argentum_game_world_data"
 version = "0.1.0"
 edition = "2021"
 description = "Argentum: World Data"
-license = "AGPL-3.0-only"
+license = "AGPL-3.0-or-later"
 
 [dependencies]
 argentum_game_voxel = "0.1.0"
