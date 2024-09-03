@@ -6,8 +6,8 @@ description = "Argentum: World Data"
 license = "AGPL-3.0-or-later"
 
 [dependencies]
-argentum_game_voxel = { path = "../argentum_game_voxel" }
-argentum_game_coordinate_system = { path = "../argentum_game_coordinate_system" }
+argentum_game_voxel = "0.1.0"
+argentum_game_coordinate_system = "0.3.0"
 quickcheck = { version = "1.0.3", default-features = false }
 dashmap = "6.0.1"
 ndarray = "0.16.1"
